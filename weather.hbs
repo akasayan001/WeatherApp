@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>headlinks}}
+</head>
+<body>
+
+  {{>navbar}}
+
+<!--main header-->
+<div class="containter-fluid main_header">
+    <div class="row">
+        <div class="col-md-10 col-12 max-auto">
+        <div class="main_content">
+            <form class="temp_form">
+                <input type="text" name="" id="cityname" placeholder="Enter your city" autocomplete="off">
+                <input type="submit" value="search" id="submitBtn">
+            </form>
+        </div>
+
+        <div class="tempInformation">
+            <div class="top_layer">
+            <p id="day">sunday</p>
+            <p id="today_date">25 jan</p>
+
+            </div>
+            <div class="main_layer">
+                <p id="city_name">get output</p>
+                <div class="middle_layer ">
+                    <p id="temp"><span id="temp_realval">0</span> <sup>o</sup>C</p>
+                    <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+
+                </div>
+                
+            </div>
+
+        </div>
+</div>
+</div>
+</div>
+
+<!--footer-->
+{{>footer}}
+
+<script src="js/main.js"></script>
+<script>
+    
+
+    const getcurrentday = ()=>
+    {
+        const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+        let currentime= new Date();
+         let days = weekday[currentime.getDay()];
+        const day=document.getElementById("day");
+        day.innerText=days;  
+    };
+    getcurrentday();
+
+ const currentime=()=>
+    {const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+         
+        var now=new Date();
+        var month = months[now.getMonth()];
+        var date=now.getDate();
+        
+        let hours=now.getHours();
+        let min=now.getMinutes();
+
+        let periods = "AM";
+
+        if (hours>11){
+            periods="PM";
+            if(hours>12)hours-=12;
+        }
+        if(min<10){
+            min="0"+min;
+        }
+
+
+        return ` ${month}   |   ${hours} :${min} ${periods} `;
+        
+    };
+     today_date.innerHTML= currentime();
+</script>
+</body>
+   
+</body>
+</html>
